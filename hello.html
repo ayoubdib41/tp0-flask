@@ -1,0 +1,26 @@
+<!-- Fichier : templates/hello.html -->
+
+{% extends "base.html" %}
+
+{% block title %}Salut{% endblock %}
+
+{% block content %}
+  <h1>Bonjour {{ prenom }} 👋</h1>
+
+  {% if aujourdhui %}
+    <p>Nous sommes le {{ aujourdhui.strftime("%d/%m/%Y") }}.</p>
+  {% endif %}
+
+  <h2>À voir aujourd'hui :</h2>
+  <ul>
+    {% for c in cours %}
+      <li>{{ c }}</li>
+    {% endfor %}
+  </ul>
+
+  {% if cours|length == 0 %}
+    <em>Rien au programme…</em>
+  {% else %}
+    <p>Il y a {{ cours|length }} élément(s) au programme.</p>
+  {% endif %}
+{% endblock %}
